@@ -1,3 +1,19 @@
-   cloud:
-    config:
-      uri: http://localhost:8888  #Localización Spring Cloud Config
+server:
+  port: 7000
+zuul:
+  routes:
+      serv-vuelos: # Service to create as sample
+        path: /svuelos/** #path that will be intercepted
+        serviceId: servicio-vuelos
+        #url: http://localhost:9000
+      serv-hoteles: # Service to create as sample
+        path: /shoteles/** #path that will be intercepted
+        serviceId: servicio-hoteles
+      serv-reservas: # Service to create as sample
+        path: /sreservas/** #path that will be intercepted
+        serviceId: servicio-reservas 
+      
+eureka:                  
+  client: 
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
